@@ -3,5 +3,5 @@ index:
     controller: App\Controller\ArticleController::homepage
 
 show:
-  path: /show
-  defaults: {controller: App\Controller\ArticleController::show, slug: test }
+  path: /show/{slug}
+  controller: App\Controller\ArticleController::show
