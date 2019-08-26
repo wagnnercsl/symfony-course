@@ -4,16 +4,22 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-//use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
+	/**
+	 * @Route("/", name="app_homepage")
+	 */
 	public function homepage()
 	{
 
-		return new Response('OK!');
+		return $this->render('article/homepage.html.twig');
 	}
 
+	/**
+	 * @Route("/show/{slug}", name="article_show")
+	*/
 	public function show($slug)
 	{
 		$comments = [
