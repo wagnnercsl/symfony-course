@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 //use Symfony\Component\Cache\Adapter\AdapterInterface;
 //use Michelf\MarkdownInterface;
+//use Nexy\Slack\Client;
+use App\Service\SlackClient;
 use App\Service\MarkdownHelper;
 //use Symfony\Component\Cache\Adapter\ApcuAdapter;
 
@@ -26,9 +28,14 @@ class ArticleController extends AbstractController
 	/**
 	 * @Route("/show/{slug}", name="article_show")
 	*/
-	public function show($slug, MarkdownHelper $markdownHelper, $isDebug)
+	public function show($slug, MarkdownHelper $markdownHelper, SlackClient $slack)
 	{
-		dd($isDebug);
+		//dd($isDebug);
+
+		if($slug == 'khaaan'){
+			$slack->sendMessage('Khan', 'Ah, Kirk, my old friend...');
+		}
+
 		$comments = [
 			'I ate a normal rock once. It did NOT taste like bacon!',
             'Woohoo! I\'m going on an all-asteroid diet!',
